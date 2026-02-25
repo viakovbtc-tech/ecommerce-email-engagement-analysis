@@ -45,31 +45,39 @@
 ## Before / After (Execution Details)
 
 ### Before Optimization
-- Bytes processed: 59.75 MB
-- Slot time: 7599
-- Execution time: 3 sec
-- Shuffled bytes: 57.57 MB
+- Elapsed time: 3 sec  
+- Slot time consumed: ~7.6 sec  
+- Shuffle output bytes: 57.57 MB  
+- Shuffle spilled to disk: 0 B  
 
-
-### After Optimization
-- Bytes processed: 59.75 MB
-- Slot time: 1482
-- Execution time: 0 sec
-- Shuffled bytes: 354
+![Before Optimization](images/before_optimization.png)
 
 ---
 
-## Impact
+### After Optimization
+- Elapsed time: 0.94 sec  
+- Slot time consumed: ~1 sec  
+- Shuffle output bytes: 354 B  
+- Shuffle spilled to disk: 0 B  
 
-Although bytes processed remained the same (same source tables),
-query performance significantly improved:
+![After Optimization](images/after_optimization.png)
 
-- Slot time reduced from 7599 to 1482
-- Execution time reduced from 3 sec to near-instant
-- Shuffled bytes reduced from 57.57 MB to 354 B
+---
 
-The main performance gain came from removing nested subqueries
-and eliminating unnecessary data reshuffling.
+## Performance Impact
+
+Although the total bytes processed remained the same (same source tables were scanned),
+the execution performance significantly improved:
+
+- Slot time reduced from ~7.6 sec to ~1 sec
+- Execution time reduced from 3 sec to under 1 sec
+- Shuffle output reduced from 57.57 MB to 354 B
+
+The main performance improvement came from:
+- Removing nested subqueries (`SELECT *`)
+- Eliminating unnecessary intermediate result sets
+- Simplifying JOIN structure
+- Reducing data reshuffling between execution stages
 
 ---
 
