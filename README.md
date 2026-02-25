@@ -1,1 +1,1 @@
-# ecommerce-sales-analysis
+# ecommerce-email-engagement-analysis
