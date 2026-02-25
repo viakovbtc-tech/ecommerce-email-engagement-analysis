@@ -37,3 +37,9 @@ Code:
 - Avoiding date logic conflicts via UNION
 - Window functions for ranking
 - Multi-level aggregation
+
+## Roadmap (next projects)
+
+- [ ] A/B Test KPI Dataset (control vs test): conversion rate, AOV, сегментація за device/country/channel
+- [ ] Cohort Retention (weekly/monthly): утримання користувачів після реєстрації
+- [ ] RFM Segmentation: Recency / Frequency / Monetary + групи клієнтів
